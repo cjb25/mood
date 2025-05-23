@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessible Mood Matcher</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- I am adding <main> as an identifiable landmark for my screen reader, so it knows that this is the main content of my page-->
+    <main>
+      <!-- this is the main heading people see first. The tabindex lets me navigate by keyboard to focus on it-->
+      <h1 tabindex="0">Mood Matcher</h1>
+      <!-- this is a form where people can choose their mood and say how they are feeling-->
+      <form id="moodForm" aria-labelledby="formDescription">
+        <p id="formDescription" class="sr-only">
+          This form lets you share your mood and write a message about why you
+          feel that way.
+        </p>
+        <!--this label tells me what the dropdown menu is for-->
+        <label for="mood">Select your mood:</label>
+        <!--this first option is to tell people to choose something-->
+        <select id="mood" name="mood" required aria-required="true">
+          <option value="">--Choose One--</option>
+          <!--these options are actual emotions someone can pick-->
+          <option value="happy">Happy</option>
+
+          <option value="sad">Sad</option>
+
+          <option value="calm">Calm</option>
+        </select>
+        <!-- the label tells people what to write inthe next box-->
+
+        <label for="note">Why do you feel this way?</label>
+        <!--the text area or box lets someone type a reason for their feelings-->
+        <textarea
+          id="note"
+          name="note"
+          rows="3"
+          style="width: 100%"
+          required
+          aria-required=" true"
+          aria-describedby="noteHelp"
+        ></textarea>
+        <!--this element is hidden but helps my screen reader understand that I am being asked to write something-->
+        <p id="noteHelp" class="sr-only">
+          Please type a short message about what's making you feel this emotion
+        </p>
+
+        <!-- this is a button that submits the form and sends the information somewhere-->
+        <button type="submit">Submit</button>
+      </form>
+      <!--the message and and image will show up here after the form submits-->
+      <section id="result" hidden tabindex="0" aria-live="polite">
+        <!-- a mood related message will display back to the user on the screen-->
+        <h2 id="message" tabindex="0"></h2>
+        <!--this is where the note the user typed in will be displayed-->
+        <p tabindex="0">
+          <strong>You said: </strong><span id="userNote"></span>
+        </p>
+        <!-- here is where a mood picture will show to the user, alt text is really important to describe for screen reader-->
+        <img
+          id="moodImage"
+          src="/images/happy.png"
+          alt="a yellow happy face image"
+          width="100"
+          tabindex="0"
+          role="img"
+        />
+      </section>
+    </main>
+    <script src="js/custom.js"></script>
+  </body>
+</html>
