@@ -81,7 +81,6 @@ button:hover {
 textarea:focus,
 select:focus,
 button:focus {
-  background-color: #ffffff;
   outline: 4px solid #000;
 }
 /*the class hides something from people who can see the screen, but my screen readers JAWS and NVDA will still read it alooud.Its a game changer for me, so I can hear descriptions that sighted users wont need to see*/
